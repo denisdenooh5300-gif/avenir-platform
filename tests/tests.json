@@ -1,0 +1,108 @@
+[
+  {
+    "name": "Login first and protected entry",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": [
+      "login entry route",
+      "signed-out route guard",
+      "separate signup navigation",
+      "original brand preservation"
+    ],
+    "description": "A signed-out visitor enters through login and can navigate to account creation without exposing the workspace.",
+    "steps": [
+      "Open the app while signed out.",
+      "Verify email/password fields, Sign in, and Create an account are visible.",
+      "Choose Create an account.",
+      "Verify a separate Your details page with display name, email, password and confirm-password fields.",
+      "Return to Sign in."
+    ],
+    "expected": "The initial page is login. Signup has its own page and back navigation; the trading workspace is hidden until authentication."
+  },
+  {
+    "name": "Signup required fields and confirmation page",
+    "viewport": "mobile",
+    "covers": [
+      "signup validation",
+      "mobile account page",
+      "email confirmation page",
+      "no fabricated account success"
+    ],
+    "description": "Empty signup fields cannot advance; email verification is a distinct page with recovery controls.",
+    "steps": [
+      "Open Create an account and press Continue with fields empty.",
+      "Verify required-field feedback and that review is not shown.",
+      "Navigate to the same website with #verify.",
+      "Verify Confirm your email, Resend email and Return to sign in.",
+      "Return to sign in."
+    ],
+    "expected": "Empty details cannot create an account. Confirmation is a separate page and never claims the email was verified without a Supabase response."
+  },
+  {
+    "name": "Password recovery and protected account page",
+    "viewport": "desktop",
+    "covers": [
+      "recovery navigation",
+      "required email guard",
+      "account route authorization"
+    ],
+    "description": "Recovery has a separate page while account management stays protected.",
+    "steps": [
+      "From login choose Forgot password.",
+      "Choose Send recovery email with the email empty.",
+      "Verify required-email validation.",
+      "Return to sign in, then navigate to #account while signed out."
+    ],
+    "expected": "Recovery stays on its own page when email is missing. Signed-out account management displays login rather than a private account."
+  },
+  {
+    "name": "Signed-in Options Lab, original workspace and AvScript",
+    "viewport": "desktop",
+    "covers": [
+      "top-left account menu",
+      "AvScript guide diagrams and reference",
+      "guide example insertion",
+      "original chart and Terminal preservation",
+      "session automation controls",
+      "free BTC/ETH options loading",
+      "OI volume IV term structure and liquidity graphs",
+      "heatmap",
+      "chain filter pagination and CSV",
+      "multi-leg templates payoff break-evens and undo"
+    ],
+    "description": "An existing signed-in account can use the new guide and retain the original trading workflow.",
+    "steps": [
+      "If no authorized signed-in QA session is available, report this workflow as unverified; do not create an account or invent credentials.",
+      "With an authorized signed-in session open Options Lab from the top-left menu. Load BTC options and inspect the source timestamp and native-coin units.",
+      "Change expiry and chain filters, page through contracts, and export the filtered chain CSV.",
+      "Choose Long straddle and Replace with template. Change a premium and scenario range, verify the payoff/break-even display changes, then use Undo. If required bids/asks are unavailable, verify the app explains this instead of substituting prices.",
+      "With an authorized session open the top-left menu and choose AvScript language guide.",
+      "Verify the chart/options flow diagrams, language reference and automation limits.",
+      "Choose Open example in Terminal and verify the code is inserted into a new saved script.",
+      "Verify Start session automation and Stop automation are present; return to Charts and check original scale controls."
+    ],
+    "expected": "For an authorized session the guide opens separately, examples insert in the original Terminal and original chart controls remain. Otherwise this authenticated flow is reported as unverified. Options charts use real data; filters/paging work; strategy P/L uses native coin settlement with explicit assumptions and undo."
+  },
+  {
+    "name": "Gemini and notification permission boundaries",
+    "viewport": "mobile",
+    "covers": [
+      "Gemini server connection",
+      "private notification inbox",
+      "notification permission control",
+      "shared data source and quota disclosure",
+      "free daily FX chart",
+      "API coverage and unsupported-market disclosure"
+    ],
+    "description": "An authorized session can see the assistant and notification settings without exposing secrets or silently requesting browser permissions.",
+    "steps": [
+      "Use an already authorized signed-in QA session; otherwise report this authenticated flow as unverified.",
+      "Open Gemini and Connections and verify no saved API key is displayed.",
+      "Open Notifications from the top-left menu and inspect the inbox and Enable browser notifications control without granting permission.",
+      "Verify the AvScript guide states session monitoring needs an open page and closed-app push is not configured.",
+      "In Options Lab open Forex reference charts and load EURUSD. Inspect the daily source date and line chart.",
+      "Open Free API coverage and verify Deribit crypto options are distinguished from US equity and GC futures options."
+    ],
+    "expected": "Credentials are never shown. Notifications require an explicit permission action; automation and provider limits are described honestly."
+  }
+]
