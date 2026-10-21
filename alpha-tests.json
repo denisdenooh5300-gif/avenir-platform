@@ -1,0 +1,101 @@
+[
+  {
+    "name": "Real crypto charts and preserved scale controls",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": [
+      "public real crypto quotes and history",
+      "original navigation",
+      "chart indicators",
+      "vertical scale scroll and reset",
+      "pointer-reactive trading image",
+      "original logo",
+      "Alpha Vantage daily stock chart",
+      "daily source timestamp"
+    ],
+    "description": "Checks real crypto data reaches the original chart without removing its controls.",
+    "steps": [
+      "Open Charts and select BTCUSDT on the 1h timeframe.",
+      "Verify a real price and candles load; open and close the indicator picker.",
+      "Use Y +, Y − and Auto scale, then scroll the right price axis.",
+      "Return Home and move the pointer across the trading background.",
+      "Select AAPL on the 1D timeframe and verify daily candles and an Alpha Vantage daily-close source date."
+    ],
+    "expected": "The original logo and controls remain visible; candles and a real source label appear, scale controls work, and the background reacts to pointer movement. AAPL daily candles use real Alpha Vantage history and are not labeled live."
+  },
+  {
+    "name": "Preserved Terminal saves AvScript work",
+    "viewport": "desktop",
+    "covers": [
+      "Terminal editor",
+      "script save and persistence",
+      "strategy library",
+      "Gemini code-assistant entry point"
+    ],
+    "description": "Checks the original code workflow remains intact alongside the additive Gemini entry point.",
+    "steps": [
+      "Open Terminal and create a script named Restored QA Script.",
+      "Enter print(\"Avenir restored\"); and save the script.",
+      "Open Strategies and verify the script is listed.",
+      "Reload and reopen Strategies, then open Terminal and choose Ask Gemini."
+    ],
+    "expected": "The script persists and Ask Gemini opens a separate panel without replacing the Terminal."
+  },
+  {
+    "name": "Account validation and provider authorization on mobile",
+    "viewport": "mobile",
+    "covers": [
+      "Supabase account UI",
+      "signup and signin validation",
+      "provider credential authorization guard",
+      "responsive Gemini panel"
+    ],
+    "description": "Checks account forms are usable and invalid credentials cannot create sessions or save provider keys.",
+    "steps": [
+      "Open Gemini and select Account.",
+      "Leave the email and password empty, then choose Sign in to check local required-field validation.",
+      "Verify a useful validation error.",
+      "Open Connections, enter a placeholder API key and attempt Save key while signed out."
+    ],
+    "expected": "Account validation and sign-in-required feedback appear; the original page remains intact and no provider key is claimed saved."
+  },
+  {
+    "name": "Original calendar persistence and real community guard",
+    "viewport": "desktop",
+    "covers": [
+      "user calendar create and persistence",
+      "Community layout",
+      "authenticated community posting",
+      "unavailable calendar provider behavior"
+    ],
+    "description": "Checks actual user events persist while unauthenticated community writes are blocked.",
+    "steps": [
+      "Open Calendar and add an event called Restored Session Review on the selected date.",
+      "Reload and revisit the same selected date.",
+      "Open Community and attempt to post a titled idea while signed out."
+    ],
+    "expected": "The calendar event remains visible; the Community form retains its original layout and posting requires sign-in without inventing a post."
+  },
+  {
+    "name": "Gemini chat and background task permission boundaries",
+    "viewport": "desktop",
+    "covers": [
+      "chat input and context control",
+      "code language selector",
+      "scheduled task instructions",
+      "background task authorization",
+      "options provider empty state",
+      "Alpha Vantage data explorer",
+      "shared daily quota and unavailable subscription feedback"
+    ],
+    "description": "Checks the new assistant and automation controls fail honestly before keys/accounts are configured.",
+    "steps": [
+      "Open Gemini Chat, enter Write an EMA crossover in AvScript, and select Write code mode.",
+      "Attempt to Send while signed out and verify sign-in feedback.",
+      "Open Automate, enter a task name and instructions, and attempt Save task.",
+      "Close Gemini and open Options without a stock options data connection.",
+      "Open Connections and inspect the Alpha Vantage dataset selector and daily allowance status. Choose NEWS_SENTIMENT and Load dataset."
+    ],
+    "expected": "Chat and task creation require sign-in; no generated code or task success is fabricated, and the original Options tools remain visible with an honest unavailable-data state. Alpha Vantage shows actual news data or an explicit provider/quota error, and never claims missing data was loaded."
+  }
+]
